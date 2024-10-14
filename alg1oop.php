@@ -25,9 +25,9 @@
 		}
 			
 		function skaiciuoti(): void {
+			$sk = $this->sk;
 			$this->cycles = 0;
 			$this->sk_i = [];
-			$sk = $this->sk;
 			
 			while($sk != 1){
 				if ($sk % 2 == 0)
@@ -45,17 +45,6 @@
 				echo $sk . "<br>";
 			}
 		}
-	}
-	
-	if (isset($_POST['sk'])) { //Check if the form was submitted and the 'sk' field is set
-		$sk = intval($_POST['sk']); //get number from the form and convert it into int
-		echo "Ivestas skaicius $sk<br><br>";
-		
-		$sk = new trys($sk);
-		$sk->skaiciuoti();
-		$sk->interakciju_skaiciai();
-		echo "<br>";
-		echo "Interakciju kiekis " . $sk->get_cycles();
 	}
 ?>
 
