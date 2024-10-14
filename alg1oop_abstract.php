@@ -4,15 +4,15 @@
     //Atspausdina visus skaiciaus 3x+1 interakciju skaicius ir
     //bendra interakciju skaiciu
 
-    interface Skaiciuotojas {
-        public function set_sk($sk);
-        public function get_sk();
-        public function get_cycles();
-        public function skaiciuoti(): void;
-        public function interakciju_skaiciai(): void;
+    abstract class Skaiciuotojas {
+        abstract protected function set_sk($sk);
+        abstract protected function get_sk();
+        abstract public function get_cycles();
+        abstract public function skaiciuoti(): void;
+        abstract public function interakciju_skaiciai(): void;
     }
 
-    class trys implements Skaiciuotojas {
+    class trys extends Skaiciuotojas {
         private $sk; //pats skaicius kuri skaiciuojam
         private $cycles = 0; //interakciju skaicius
         public $sk_i = []; //skaiciaus visi interakcijos skaiciai
@@ -23,11 +23,11 @@
             $this->sk = $sk;
         }
 
-        public function set_sk($sk) {
+        protected function set_sk($sk) {
             $this->sk = $sk;
         }
 
-        public function get_sk() {
+        protected function get_sk() {
             return $this->sk;
         }
 
